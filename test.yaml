@@ -1,0 +1,11 @@
+- hosts: localhost
+#  vars:
+#     contents: "{{ lookup('file', '/home/osboxes/Desktop/test/new.json') }}"
+  gather_facts: false
+  tasks:
+    - include_vars:
+        file: /home/osboxes/Desktop/test/simple.json
+        name: my_items
+    - debug: msg="the keys of json is {{ (my_items.keys()) }}"
+    - debug: msg="the values of json is {{ (my_items.values()) }}"
+    - debug: msg=" Access value or key through index  {{ my_items.keys()[1] , my_items.values()[1] }}"
